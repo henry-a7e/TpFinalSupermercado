@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_06_20_040407) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "branch_offices", force: :cascade do |t|
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_040407) do
 
   create_table "phone_numbers", force: :cascade do |t|
     t.integer "phone_number"
-    t.integer "branch_office_id", null: false
+    t.bigint "branch_office_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["branch_office_id"], name: "index_phone_numbers_on_branch_office_id"
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_040407) do
     t.float "price"
     t.datetime "begin_at"
     t.datetime "ends_at"
-    t.integer "product_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_price_registers_on_product_id"
@@ -64,8 +67,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_040407) do
     t.float "purchase_amount"
     t.float "sale_amount"
     t.integer "stock"
-    t.integer "branch_office_id", null: false
-    t.integer "category_id", null: false
+    t.bigint "branch_office_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["branch_office_id"], name: "index_products_on_branch_office_id"
@@ -76,13 +79,13 @@ ActiveRecord::Schema.define(version: 2021_06_20_040407) do
     t.datetime "begins_at"
     t.datetime "ends_at"
     t.boolean "head"
-    t.integer "branch_Office_id", null: false
-    t.integer "department_id", null: false
-    t.integer "stall_id", null: false
-    t.integer "employee_id", null: false
+    t.bigint "branch_office_id", null: false
+    t.bigint "department_id", null: false
+    t.bigint "stall_id", null: false
+    t.bigint "employee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["branch_Office_id"], name: "index_rotations_on_branch_Office_id"
+    t.index ["branch_office_id"], name: "index_rotations_on_branch_office_id"
     t.index ["department_id"], name: "index_rotations_on_department_id"
     t.index ["employee_id"], name: "index_rotations_on_employee_id"
     t.index ["stall_id"], name: "index_rotations_on_stall_id"
@@ -91,7 +94,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_040407) do
   create_table "sales", force: :cascade do |t|
     t.float "discount"
     t.float "total_amount"
-    t.integer "product_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_sales_on_product_id"
@@ -109,10 +112,10 @@ ActiveRecord::Schema.define(version: 2021_06_20_040407) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "first_name"
-    t.string "last_name"
-    t.boolean "admin"
-    t.integer "phone_number"
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.boolean "admin", null: false
+    t.integer "phone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -123,7 +126,7 @@ ActiveRecord::Schema.define(version: 2021_06_20_040407) do
   add_foreign_key "price_registers", "products"
   add_foreign_key "products", "branch_offices"
   add_foreign_key "products", "categories"
-  add_foreign_key "rotations", "branch_Offices"
+  add_foreign_key "rotations", "branch_offices"
   add_foreign_key "rotations", "departments"
   add_foreign_key "rotations", "employees"
   add_foreign_key "rotations", "stalls"

@@ -15,7 +15,7 @@ class RotationsController < ApplicationController
 
 
 
-    @rotations = @rotations.where(:branch_Office_id => params[:branch_Office_id]) unless params[:branch_Office_id].blank?
+    @rotations = @rotations.where(:branch_office_id => params[:branch_office_id]) unless params[:branch_office_id].blank?
    
     @rotations = @rotations.where(:stall_id => params[:stall_id]) unless params[:stall_id].blank?
     @rotations = @rotations.where(:employee_id => params[:employee_id]) unless params[:employee_id].blank?

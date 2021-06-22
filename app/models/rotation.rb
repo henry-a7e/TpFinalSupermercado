@@ -1,5 +1,5 @@
 class Rotation < ApplicationRecord
-  belongs_to :branch_Office
+  belongs_to :branch_office
   belongs_to :department
   belongs_to :stall
   belongs_to :employee
