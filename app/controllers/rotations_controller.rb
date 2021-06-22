@@ -81,6 +81,6 @@ class RotationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rotation_params
-      params.require(:rotation).permit(:begins_at, :ends_at, :head, :branch_Office_id, :department_id, :stall_id, :employee_id)
+      params.require(:rotation).permit(:begins_at, :ends_at, :head, :branch_office_id, :department_id, :stall_id, :employee_id)
     end
 end
