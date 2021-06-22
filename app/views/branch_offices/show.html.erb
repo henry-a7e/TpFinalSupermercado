@@ -1,0 +1,13 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%=t('branch_office.address') %>:</strong>
+  <%= @branch_office.address %>
+</p>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.edit') , edit_branch_office_path(@branch_office) , class: "btn text-dark"%> </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), branch_offices_path, class: "btn text-dark" %></button>
+
+
+

@@ -1,0 +1,30 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%= t("price_register.price")%>:</strong>
+  <%= @price_register.price %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("price_register.begin_at")%>:</strong>
+  <%= @price_register.begin_at %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("price_register.end_at")%>:</strong>
+  <%= @price_register.ends_at %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("price_register.product")%>:</strong>
+  <%= @price_register.product.product_name %>
+</p>
+
+
+<button type="button" class="btn btn-outline-info">
+<%= link_to t('g.edit'), edit_price_register_path(@price_register) , class: "btn text-dark"%> </button>
+
+<button type="button" class="btn btn-outline-info">
+<%= link_to t('g.back'), price_registers_path, class: "btn text-dark" %> </button>
+
+

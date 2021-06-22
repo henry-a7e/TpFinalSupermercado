@@ -1,0 +1,38 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong ><%= t("product.product_name")%>:</strong>
+  <%= @product.product_name %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("product.purchase_amount")%>:</strong>
+  <%= @product.purchase_amount %>
+</p>
+
+<p class="form-control">
+  <strong ><%= t("product.sale_amount")%>:</strong>
+  <%= @product.sale_amount %>
+</p>
+
+<p class="form-control">
+  <strong ><%= t("product.stock")%>:</strong>
+  <%= @product.stock %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("product.branch_office")%>:</strong>
+  <%= @product.branch_office.address %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("product.category")%>:</strong>
+  <%= @product.category.category_name %>
+</p>
+
+<button type="button" class="btn btn-outline-info">
+<%= link_to 'Edit', edit_product_path(@product) , class: "btn text-dark"%>  </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to 'Back', products_path, class: "btn text-dark" %></button>
+
+

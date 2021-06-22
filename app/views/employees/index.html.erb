@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.employees")%></h1>
+
+<br>
+<form method="GET" action="/employees">
+  <div class="form-floating mb-3">
+      <input type="text" name="filter" class="form-control" id="floatingInput"/>
+      <label for="floatingInput"><%= t("employee.first_name")  %> <%= " or "%> <%= t("employee.last_name")  %></label>
+  </div>
+  <input type="submit" class="btn btn-primary" value=<%= t("g.search")%>   />
+      <select name="gender" class="form-select" aria-label="Default select">
+        <option value=""><%= t("b.select_gender")  %></option>
+        <option value="1"><%= t("b.male")%></option>
+        <option value="2"><%= t("b.femenine")%></option>
+      </select>
+</form>
+<br>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th> <%=t('employee.first_name') %></th>
+      <th><%=t('employee.last_name') %></th>
+      <th><%=t('employee.document_number') %></th>
+      <th><%=t('employee.gender') %></th>
+      <th><%=t('employee.years_old') %></th>
+      <th colspan="3"> <%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.first_name %></td>
+        <td><%= employee.last_name %></td>
+        <td><%= employee.document_number %></td>
+        <td><%= employee.sexo %></td>
+        <td><%= distance_of_time_in_words(employee.birth_date, Time.now) %></td>
+     
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+
+            <td class="btn btn-info"><%= link_to t("g.show"), employee , class: "btn text-dark"%></td>
+            <td class="btn btn-info"><%= link_to t("g.edit"), edit_employee_path(employee) , class: "btn text-dark"%></td>
+            <td class="btn btn-info"><%= link_to t("g.destroy"), employee, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure") } %></td>
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @employees %>
+<br>
+
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+
+      <button type="button" class="btn btn-outline-secondary"><%= link_to t("e.new_employees"), new_employee_path , class: "btn text-dark"%></button>
+      
+  <% end %>
+<% end %>

@@ -1,0 +1,15 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%=t('category.category_father') %></strong>
+  <%= @category.id_category_father %>
+</p>
+
+<p class="form-control">
+  <strong><%=t('category.category_name') %>:</strong>
+  <%= @category.category_name %>
+</p>
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.edit'), edit_category_path(@category), class: "btn text-dark" %> </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), categories_path , class: "btn text-dark"%> </button>
+

@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.rotations")%></h1>
+<br>
+<form method="GET" action="/rotations">
+  
+  <select name="department_id" class="form-select">
+    <option value=""><%= t("b.select_department")%> </option>
+    <% Department.all.each do | d |%>
+      <option value= "<%= d.id %>"> <%= d.department_name %> </option>
+    <% end %>
+  </select><br>
+  <select name="stall_id" class="form-select">
+    <option value=""><%= t("b.select_stall")%> </option>
+    <% Stall.all.each do | d |%>
+      <option value= "<%= d.id %>"> <%= d.stall_name %> </option>
+    <% end %>
+  </select><br>
+  <select name="branch_office_id" class="form-select">
+    <option value=""><%= t("b.select_address")%> </option>
+    <% BranchOffice.all.each do | d |%>
+      <option value= "<%= d.id %>"> <%= d.address %> </option>
+    <% end %>
+  </select><br>
+
+  <select name="head" class="form-select" aria-label="Default select">
+        <option value=""><%= t("b.select_department_head")%> </option>
+        <option value="true"><%= t("b.yes")%> </option>
+        <option value="false"><%= t("b.no")%> </option>
+      </select><br>
+
+  <input type="submit" class="btn btn-primary" value=<%= t("g.search")%>   />
+      
+</form>
+<br>
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th><%=t('rotation.begins_at') %></th>
+      <th><%=t('rotation.end_at') %></th>
+      <th><%=t('rotation.head') %></th>
+      <th><%=t('rotation.branch_office') %></th>
+      <th><%=t('rotation.department') %></th>
+      <th><%=t('rotation.stall') %></th>
+      <th><%=t('rotation.employee') %></th>
+      <th colspan="3"><%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rotations.each do |rotation| %>
+      <tr>
+        <td><%= rotation.begins_at %></td>
+        <td><%= rotation.ends_at %></td>
+        <td><%= rotation.jefe %></td>
+        <td><%= rotation.branch_Office.address %></td>
+        <td><%= rotation.department.department_name %></td>
+        <td><%= rotation.stall.stall_name %></td>
+        <td><%= rotation.employee.full_name %></td>
+ 
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+        
+              <td class="btn btn-info"><%= link_to t("g.show"), rotation, class: "btn text-dark" %></td>
+              <td class="btn btn-info"><%= link_to t("g.edit"), edit_rotation_path(rotation), class: "btn text-dark"%></td>
+              <td class="btn btn-info"><%= link_to t("g.destroy"), rotation, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure") } %></td>
+
+        
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @rotations %>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+        <button type="button" class="btn btn-outline-secondary"><%= link_to t("e.new_rotations"), new_rotation_path , class: "btn text-dark"%></button>
+  
+        
+  <% end %>
+<% end %>

@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.products")%></h1>
+
+<br>
+<form method="GET" action="/products">
+  <div class="form-floating mb-3">
+    <input type="text" name="filter" class="form-control" id="floatingInput"/>
+    <label for="floatingInput"><%= t("product.product_name")%> </label>
+  </div>
+  <input type="submit" class="btn btn-primary" value=<%= t("g.search")%>   />
+
+
+  <select name="category_id" class="form-select">
+    <option value=""><%= t("b.select_category")%> </option>
+    <% Category.all.each do | d |%>
+      <option value= "<%= d.id %>"> <%= d.category_name %> </option>
+    <% end %>
+  </select>
+
+</form>
+<br>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th><%=t('product.product_name') %></th>
+      <th><%=t('product.purchase_amount') %></th>
+      <th><%=t('product.sale_amount') %></th>
+      <th><%=t('product.stock') %></th>
+      <th><%=t('product.branch_office') %></th>
+      <th><%=t('product.category') %></th>
+      <th colspan="3"><%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.product_name %></td>
+        <td><%= product.purchase_amount %></td>
+        <td><%= product.sale_amount %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.branch_office.address %></td>
+        <td><%= product.category.category_name %></td>
+
+
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+
+
+              <td class="btn btn-info"><%= link_to t("g.show"), product , class: "btn text-dark"%></td>
+              <td class="btn btn-info"><%= link_to t("g.edit"), edit_product_path(product), class: "btn text-dark" %></td>
+              <td class="btn btn-info"><%= link_to t("g.destroy"), product, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure") } %></td>
+
+        
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= paginate @products %>
+
+
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+
+        <button type="button" class="btn btn-outline-secondary"><%= link_to t("e.new_products"), new_product_path , class: "btn text-dark"%></button>
+    
+  <% end %>
+<% end %>

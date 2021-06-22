@@ -1,0 +1,5 @@
+<% if I18n.locale == I18n.default_locale %>
+  <%= link_to "Change to English", { :locale=>'en' }, class: "btn text-dark" %>
+<% else %>
+   <%= link_to "Cambiar a Español", { :locale=>'es' }, class: "btn text-dark" %>
+<%end%>

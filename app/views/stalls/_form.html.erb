@@ -1,0 +1,23 @@
+<%= form_with(model: stall) do |form| %>
+  <% if stall.errors.any? %>
+    <div id="error_explanation" >
+      <h2 ><%= pluralize(stall.errors.count, "error") %> prohibited this stall from being saved:</h2>
+
+      <ul>
+        <% stall.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-control ">
+    <%= form.label :stall_name %>
+    <%= form.text_field :stall_name %>
+  </div>
+
+  <div class="actions form-control ">
+  
+    <%= form.submit %>
+  </div>
+<% end %>

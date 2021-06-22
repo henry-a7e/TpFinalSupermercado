@@ -1,0 +1,76 @@
+<div class="collapse navbar-collapse show" id="navbarWithDropdown">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <%= link_to t('e.index'), root_url, class: 'btn-primary nav-link text-white  h6' %>
+    </li>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+
+      <li class="nav-item">
+        <%= link_to t('e.price_registers') , price_registers_url, class: 'btn-primary nav-link text-white h6' if can? :manage, PriceRegister %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.sales') , sales_url, class: 'btn-primary nav-link text-white h6' if can? :manage, Sale %>
+      <li class="nav-item">
+        <%= link_to t('e.products') , products_url, class: 'btn-primary nav-link text-white h6' if can? :manage, Product %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.categories') , categories_url, class: 'btn-primary nav-link text-white h6' if can? :manage, Category %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.rotations') , rotations_url, class: 'btn-primary nav-link text-white h6' if can? :manage, Rotation %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.employees') , employees_url, class: 'btn-primary nav-link text-white h6' if can? :manage, Employee %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.stalls') , stalls_url, class: 'btn-primary nav-link text-white h6' if can? :manage, Stall %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.departments') , departments_url, class: 'btn-primary nav-link text-white h6' if can? :manage, Department %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.phone_numbers') , phone_numbers_url, class: 'btn-primary nav-link text-white h6' if can? :manage, PhoneNumber %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.branch_offices'), branch_offices_url, class: 'btn-primary nav-link text-white h6' if can? :manage, BranchOffice %>
+    
+    
+    <% else %>
+
+
+      <li class="nav-item">
+        <%= link_to t('e.price_registers') , price_registers_url, class: 'btn-primary nav-link text-white h6' if can? :read, PriceRegister %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.sales') , sales_url, class: 'btn-primary nav-link text-white h6' if can? :read, Sale %>
+      <li class="nav-item">
+        <%= link_to t('e.products') , products_url, class: 'btn-primary nav-link text-white h6' if can? :read, Product %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.categories') , categories_url, class: 'btn-primary nav-link text-white h6' if can? :read, Category %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.rotations') , rotations_url, class: 'btn-primary nav-link text-white h6' if can? :read, Rotation %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.employees') , employees_url, class: 'btn-primary nav-link text-white h6' if can? :read, Employee %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.stalls') , stalls_url, class: 'btn-primary nav-link text-white h6' if can? :read, Stall %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.departments') , departments_url, class: 'btn-primary nav-link text-white h6' if can? :read, Department %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.phone_numbers') , phone_numbers_url, class: 'btn-primary nav-link text-white h6' if can? :read, PhoneNumber %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('e.branch_offices') , branch_offices_url, class: 'btn-primary nav-link text-white h6' if can? :read, BranchOffice %>
+    <% end %>
+    <%end%>
+
+   
+   
+  </ul>
+</div>

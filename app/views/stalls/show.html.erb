@@ -1,0 +1,13 @@
+
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%= t("stall.stall_name")%>:</strong>
+  <%= @stall.stall_name %>
+</p>
+
+<button type="button" class="btn btn-outline-info"><%= link_to 'Edit', edit_stall_path(@stall), class: "btn text-dark" %>  </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), stalls_path , class: "btn text-dark"%> </button>
+
+

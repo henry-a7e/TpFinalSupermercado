@@ -1,0 +1,23 @@
+<div class="collapse navbar-collapse show text-end" id="navbarWithDropdown">
+  <ul class="navbar-nav">
+    <% if user_signed_in? %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle btn btn-primary " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span style="color:white"><strong><%= current_user.last_name.upcase %>, </strong><%= current_user.first_name %></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+          <li><%= link_to "Editar Perfil", edit_user_registration_path, class: "btn text-white" %></li>
+          <hr>
+          <li><%= link_to "Cerrar Sesión", destroy_user_session_path, class: "btn text-white",  method: :delete  %></li>
+        </ul>
+      </li>
+    <% else %>
+      <%= link_to "Iniciar Sesión", new_user_session_url, class: 'btn btn-dark  text-white' %>
+    <% end %>
+  </ul>
+</div>
+
+
+
+
+

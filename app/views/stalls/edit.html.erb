@@ -1,0 +1,9 @@
+<h1>Editing Stall</h1>
+
+<%= render 'form', stall: @stall %>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.show'), @stall, class: "btn text-dark" %>  </button>
+
+<button type="button" class="btn btn-outline-info">
+<%= link_to t('g.back'), stalls_path, class: "btn text-dark" %> </button>
+

@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.branch_offices")%></h1>
+
+<br>
+<form method="GET" action="/branch_offices">
+  <div class="form-floating mb-3">
+    <input type="text" name="filter" class="form-control" id="floatingInput"/>
+    <label for="floatingInput"><%= t("branch_office.address")%></label>
+  </div>
+  <input type="submit" class="btn btn-primary" value=<%= t("g.search")%> />
+</form>
+<br>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th><%=t('branch_office.address') %></th>
+      <th colspan="3"><%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @branch_offices.each do |branch_office| %>
+      <tr>
+        <td><%= branch_office.address %></td>
+
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+
+            <td class="btn btn-info">
+                <%= link_to t("g.show"), branch_office, class: "btn text-dark" %>
+            </td>
+            <td class="btn btn-info"><%= link_to t("g.edit"), edit_branch_office_path(branch_office), class: "btn text-dark" %></td>
+            <td class="btn btn-info"><%= link_to t("g.destroy"), branch_office, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure") } %></td>
+          
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+      </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+<%= paginate @branch_offices %>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+                <button type="button" class="btn btn-outline-secondary"> <%= link_to t("e.new_branch_offices"), new_branch_office_path, class: "btn text-dark" %></button>
+   
+   
+  <% end %>
+<% end %>

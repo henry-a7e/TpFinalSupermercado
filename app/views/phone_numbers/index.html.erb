@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.phone_numbers")%></h1>
+
+<form method="GET" action="/phone_numbers">
+  <div class="form-floating mb-3">
+      <input type="number" name="filter" class="form-control" id="floatingInput"/>
+      <label for="floatingInput"><%= t("phone_number.phone_numbers")%> </label>
+  </div>
+  <input type="submit" class="btn btn-primary" value=<%= t("g.search")%>  />
+</form>
+<br>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th><%=t('phone_number.phone_numbers') %></th>
+      <th><%=t('phone_number.branch_office') %></th>
+      <th colspan="3"><%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @phone_numbers.each do |phone_number| %>
+      <tr>
+        <td><%= phone_number.phone_number %></td>
+        <td><%= phone_number.branch_office.address unless phone_number.nil? %></td>
+        
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+
+              <td class="btn btn-info"><%= link_to t("g.show"), phone_number , class: "btn text-dark"%></td>
+              <td class="btn btn-info"><%= link_to t("g.edit"), edit_phone_number_path(phone_number), class: "btn text-dark" %></td>
+              <td class="btn btn-info"><%= link_to t("g.destroy"), phone_number, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure") } %></td>
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @phone_numbers %>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+          <button type="button" class="btn btn-outline-secondary"><%= link_to t("e.new_phone_numbers"), new_phone_number_path, class: "btn text-dark" %></button>
+      
+  <% end %>
+<% end %>

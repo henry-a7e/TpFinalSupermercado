@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phone_number: 1
+  branch_office: one
+
+two:
+  phone_number: 1
+  branch_office: two

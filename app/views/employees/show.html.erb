@@ -1,0 +1,35 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%=t('employee.first_name') %>:</strong>
+  <%= @employee.first_name %>
+</p>
+
+<p class="form-control">
+  <strong><%=t('employee.last_name') %>:</strong>
+  <%= @employee.last_name %>
+</p>
+
+<p class="form-control">
+  <strong><%=t('employee.document_number') %>:</strong>
+  <%= @employee.document_number %>
+</p>
+
+<p class="form-control">
+  <strong><%=t('employee.gender') %>:</strong>
+  <%= @employee.gender %>
+</p>
+
+<p class="form-control">
+  <strong><%=t('employee.years_old') %>:</strong>
+  <%= distance_of_time_in_words(@employee.birth_date, Time.now) %>
+</p>
+
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.edit'), edit_employee_path(@employee) %>  </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), employees_path %> </button>
+
+
+
+

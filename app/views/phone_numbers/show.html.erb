@@ -1,0 +1,19 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%= t("phone_number.phone_numbers")%>:</strong>
+  <%= @phone_number.phone_number %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("phone_number.branch_office")%>:</strong>
+  <%= @phone_number.branch_office.address %>
+</p>
+
+<button type="button" class="btn btn-outline-info">
+<%= link_to t('g.edit'), edit_phone_number_path(@phone_number), class: "btn text-dark" %> </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), phone_numbers_path , class: "btn text-dark"%> </button>
+
+
+

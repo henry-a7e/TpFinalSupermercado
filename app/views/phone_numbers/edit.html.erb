@@ -1,0 +1,10 @@
+<h1>Editing Phone Number</h1>
+
+<%= render 'form', phone_number: @phone_number %>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.show'), @phone_number, class: "btn text-dark" %>  </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), phone_numbers_path, class: "btn text-dark" %> </button>
+
+
+

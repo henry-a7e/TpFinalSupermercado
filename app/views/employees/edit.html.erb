@@ -1,0 +1,10 @@
+<h1>Editing Employee</h1>
+
+<%= render 'form', employee: @employee %>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.show'), @employee, class: "btn text-dark" %>  </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), employees_path , class: "btn text-dark"%> </button>
+
+
+

@@ -1,0 +1,43 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%= t("rotation.begins_at")%>:</strong>
+  <%= @rotation.begins_at %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("rotation.end_at")%>:</strong>
+  <%= @rotation.ends_at %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("rotation.head")%>:</strong>
+  <%= @rotation.head %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("rotation.branch_office")%>e:</strong>
+  <%= @rotation.branch_Office.address %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("rotation.department")%>:</strong>
+  <%= @rotation.department.department_name %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("rotation.stall")%>:</strong>
+  <%= @rotation.stall.stall_name %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("rotation.employee")%>:</strong>
+  <%= @rotation.employee.full_name %>
+</p>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.edit'), edit_rotation_path(@rotation), class: "btn text-dark" %> </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), rotations_path, class: "btn text-dark" %> </button>
+
+
+

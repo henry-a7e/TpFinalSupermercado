@@ -1,0 +1,15 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%=t('department.department_name') %>:</strong>
+  <%= @department.department_name %>
+</p>
+
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.edit'), edit_department_path(@department) , class: "btn text-dark"%>  </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), departments_path , class: "btn text-dark"%> </button>
+
+
+
+

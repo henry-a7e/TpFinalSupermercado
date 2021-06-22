@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.price_registers")%> </h1>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th><%=t('price_register.price') %></th>
+      <th><%=t('price_register.begin_at') %></th>
+      <th><%=t('price_register.end_at') %></th>
+      <th><%=t('price_register.product') %></th>
+      <th colspan="3"><%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @price_registers.each do |price_register| %>
+      <tr>
+        <td><%= price_register.price %></td>
+        <td><%= price_register.begin_at %></td>
+        <td><%= price_register.ends_at %></td>
+        <td><%= price_register.product.product_name %></td>
+
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+
+            <td class="btn btn-info"><%= link_to t("g.show"), price_register, class: "btn text-dark" %></td>
+            <td class="btn btn-info"><%= link_to t("g.edit"), edit_price_register_path(price_register), class: "btn text-dark" %></td>
+            <td class="btn btn-info"><%= link_to t("g.destroy"), price_register, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure")} %></td>
+
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @price_registers %>
+
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+
+         <button type="button" class="btn btn-outline-secondary"> <%= link_to t("e.new_price_registers"), new_price_register_path, class: "btn text-dark" %></button>
+     
+  <% end %>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>Editing Product</h1>
+
+<%= render 'form', product: @product %>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.show'), @product, class: "btn text-dark" %>  </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), products_path , class: "btn text-dark"%> </button>
+
+
+

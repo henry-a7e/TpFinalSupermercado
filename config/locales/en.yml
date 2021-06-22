@@ -1,0 +1,116 @@
+
+
+en:
+  date:
+    order: ["day", "month", "year"]
+
+  d:
+    admin: "Admin"
+  b:
+    select_category: "Select Category"
+    select_department: "Select Department"
+    select_stall: "Select Stall"
+    select_address: "Select Branch Office Address"
+    select_department_head: "Departmente Head?"
+    select_gender: "Select Gender"
+    male: "Male"
+    feminine: "Feminine"
+    yes: "Yes"
+    no: "No"
+
+  g:
+    save: "Save"
+    show: "Show"
+    edit: "Edit"
+    destroy: "Delete"
+    are_you_sure: "Are you sure?"
+    edit: "Edit"
+    back: "Back"
+    search: "Search"
+
+  e:
+    price_registers: "Price Registers"
+    sales: "Sales"
+    products: "Products"
+    categories: "Categories"
+    rotations: "Rotations"
+    employees: "Employees"
+    stalls: "Stalls"
+    departments: "Departments"
+    phone_numbers: "Phone Numbers"
+    branch_offices: "Branch Offices"
+    options: "Options"
+    index: "Index"
+    new_price_registers: "New Price Register"
+    new_sales: "New Sale"
+    new_products: "New Product"
+    new_categories: "New Category"
+    new_rotations: "New Rotation"
+    new_employees: "New Employee"
+    new_stalls: "New Stall"
+    new_departments: "New Department"
+    new_phone_numbers: "New Phone Number"
+    new_branch_offices: "New Branch Office"
+  stall:
+    stall_name: "Stall Name"
+  sale:
+    discount: "Discount"
+    total_amount: "Total Amount"
+    product: "Product"
+  rotation:
+    begins_at: "Begin At"
+    end_at: "Ends At"
+    head: "Department Head?"
+    branch_office: "Branch Office"
+    department: "Department"
+    stall: "Stall"
+    employee: "Employee"
+  product:
+    product_name: "Product Name"
+    purchase_amount: "Purchase Amount"
+    sale_amount: "Sale Amount"
+    stock: "Stock"
+    branch_office: "Branch Office"
+    category: "Category"
+  price_register:
+    price: "Price"
+    begin_at: "Begin At"
+    end_at: "End At"
+    product: "Product"
+  phone_number:
+    phone_numbers: "Phone Number"
+    branch_office: "Branch Office"
+  employee:
+    first_name: "First Name"
+    last_name: "Last Name"
+    document_number: "Document Number"
+    gender: "Gender"
+    years_old: "Years Old"
+  department:
+    department_name: "Department Name"
+  category:
+    category_father: "Category Father "
+    category_name: "Category Name"
+  branch_office:
+    address: "Address"
+
+
+  
+
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+

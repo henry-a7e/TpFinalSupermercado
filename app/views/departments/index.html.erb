@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.departments")%></h1>
+
+<br>
+<form method="GET" action="/departments">
+  <div class="form-floating mb-3">
+    <input type="text" name="filter" class="form-control" id="floatingInput"/>
+    <label for="floatingInput"><%= t("department.department_name")%></label>
+  </div>
+  <input type="submit" class="btn btn-primary" value=<%= t("g.search")%>  />
+</form>
+<br>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th><%=t('department.department_name') %></th>
+      <th colspan="3"><%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departments.each do |department| %>
+      <tr>
+        <td><%= department.department_name %></td>
+
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+
+            <td class="btn btn-info"><%= link_to t("g.show"), department , class: "btn text-dark"%></td>
+            <td class="btn btn-info"><%= link_to t("g.edit"), edit_department_path(department) , class: "btn text-dark"%></td>
+            <td class="btn btn-info"><%= link_to t("g.destroy"), department, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure")} %></td>
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @departments %>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+
+        <button type="button" class="btn btn-outline-secondary"><%= link_to t("e.new_departments"), new_department_path , class: "btn text-dark"%></button>
+      
+   
+  <% end %>
+<% end %>

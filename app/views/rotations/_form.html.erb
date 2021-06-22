@@ -1,0 +1,52 @@
+<%= form_with(model: rotation) do |form| %>
+  <% if rotation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rotation.errors.count, "error") %> prohibited this rotation from being saved:</h2>
+
+      <ul>
+        <% rotation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-control">
+    <%= form.label :begins_at %>
+    <%= form.datetime_select :begins_at %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :ends_at %>
+    <%= form.datetime_select :ends_at %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :head %>
+    <%= form.check_box :head %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :branch_Office_id %>
+    <%= form.collection_select(:branch_Office_id, BranchOffice.all, :id, :address) %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :department_id %>
+    <%= form.collection_select(:department_id, Department.all, :id, :department_name) %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :stall_id %>
+    <%= form.collection_select(:stall_id, Stall.all, :id, :stall_name) %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :employee_id %>
+    <%= form.collection_select(:employee_id, Employee.all, :id, :full_name) %>
+  </div>
+
+  <div class="actions form-control">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,37 @@
+<%= form_with(model: price_register) do |form| %>
+  <% if price_register.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(price_register.errors.count, "error") %> prohibited this price_register from being saved:</h2>
+
+      <ul>
+        <% price_register.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-control">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :begin_at %>
+    <%= form.datetime_select :begin_at %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :ends_at %>
+    <%= form.datetime_select :ends_at %>
+  </div>
+
+  <div class="form-control">
+    <%= form.label :product_id %>
+    <%= form.collection_select(:product_id, Product.all, :id, :product_name) %>
+  </div>
+
+  <div class="actions form-control">
+    <%= form.submit %>
+  </div>
+<% end %>

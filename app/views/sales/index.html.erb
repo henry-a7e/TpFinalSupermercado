@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.sales")%></h1>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th><%=t('sale.discount') %></th>
+      <th><%=t('sale.total_amount') %></th>
+      <th><%=t('sale.product') %></th>
+      <th colspan="3"><%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.discount %></td>
+        <td><%= sale.total_amount %></td>
+        <td><%= sale.product.product_name %></td>
+
+         <% if user_signed_in? %>
+          <% if current_user.admin? %>
+
+              <td class="btn btn-info"><%= link_to t("g.show"), sale, class: "btn text-dark" %></td>
+              <td class="btn btn-info"><%= link_to t("g.edit"), edit_sale_path(sale), class: "btn text-dark" %></td>
+              <td class="btn btn-info"><%= link_to t("g.destroy"), sale, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure") } %></td>
+          
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @sales %>
+
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+      
+      <button type="button" class="btn btn-outline-secondary"><%= link_to t("e.new_sales"), new_sale_path, class: "btn text-dark" %></button>
+  <% end %>
+<% end %>

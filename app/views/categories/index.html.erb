@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("e.categories")%></h1>
+<br>
+<form method="GET" action="/categories">
+  <div class="form-floating mb-3">
+    <input type="text" name="filter" class="form-control" id="floatingInput"/>
+    <label for="floatingInput"><%= t("category.category_name")%></label>
+  </div>
+  <input type="submit" class="btn btn-primary" value=<%= t("g.search")%>  />
+</form>
+<br>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th><%=t('category.category_father') %></th>
+      <th><%=t('category.category_name') %></th>
+      <th colspan="3"><%=t('e.options') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.categoriaPadre %></td>
+        <td><%= category.category_name %></td>
+
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+
+            <td class="btn btn-info"><%= link_to t("g.show"), category, class: "btn text-dark" %></td>
+            <td class="btn btn-info"><%= link_to t("g.edit"), edit_category_path(category) , class: "btn text-dark"%></td>
+            <td class="btn btn-info"><%= link_to t("g.destroy"), category, class: "btn text-dark", method: :delete, data: { confirm: t("g.are_you_sure") } %></td>
+
+          <% else %>
+            <td><%= "NO TIENES ACCESO" %></td>
+          <% end %>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @categories %>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+            <button type="button" class="btn btn-outline-secondary"><%= link_to t("e.new_categories"), new_category_path , class: "btn text-dark"%></button>
+  
+       
+  <% end %>
+<% end %>

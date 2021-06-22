@@ -1,0 +1,23 @@
+<p id="notice" class="h6 text-sucess alert alert-primary" role="alert"><%= notice %></p>
+
+<p class="form-control">
+  <strong><%= t("sale.discount")%>:</strong>
+  <%= @sale.discount %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("sale.total_amount")%>:</strong>
+  <%= @sale.total_amount %>
+</p>
+
+<p class="form-control">
+  <strong><%= t("sale.product")%>:</strong>
+  <%= @sale.product.product_name %>
+</p>
+
+<button type="button" class="btn btn-outline-info">
+<%= link_to t('g.edit'), edit_sale_path(@sale), class: "btn text-dark" %>  </button>
+
+<button type="button" class="btn btn-outline-info"><%= link_to t('g.back'), sales_path, class: "btn text-dark" %> </button>
+
+
