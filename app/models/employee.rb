@@ -2,7 +2,7 @@ class Employee < ApplicationRecord
     has_many :rotations
 
     validates :document_number, :uniqueness => true, :presence => true
-    validates :genre, :presence => true
+    validates :gender, :presence => true
 
     def full_name 
       first_name + " " + last_name
